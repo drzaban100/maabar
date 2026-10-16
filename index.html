@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مَعبر | Ma'bar - پل ارتباط شما با بهترین‌ها</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Gulzar&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="particles" id="particles"></div>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="تغییر حالت">
+        <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="moon-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#7c3aed"/>
+                            <stop offset="50%" style="stop-color:#db2777"/>
+                            <stop offset="100%" style="stop-color:#f59e0b"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 10 70 Q 50 10 90 70" stroke="url(#logoGrad)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <rect x="8" y="65" width="8" height="20" rx="2" fill="url(#logoGrad)"/>
+                    <rect x="84" y="65" width="8" height="20" rx="2" fill="url(#logoGrad)"/>
+                    <circle cx="15" cy="68" r="5" fill="#db2777"/>
+                    <circle cx="85" cy="68" r="5" fill="#7c3aed"/>
+                    <path d="M 50 35 L 53 43 L 61 43 L 55 48 L 57 56 L 50 51 L 43 56 L 45 48 L 39 43 L 47 43 Z" fill="#fbbf24"/>
+                </svg>
+                <div class="logo-text">
+                    <h1 class="logo-fa">مَعبر</h1>
+                    <span class="logo-en"><span class="m-gold">M</span>a'bar</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="#home" data-nav="home">خانه</a>
+                <a href="#services" data-nav="services">خدمات</a>
+                <a href="#how" data-nav="how">چگونه کار می‌کند؟</a>
+                <a href="#contact" data-nav="contact">تماس با ما</a>
+                <a href="#register" class="btn-nav">ثبت‌نام فروشنده</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content"></main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-text">
+                        <h1 class="logo-fa">مَعبر</h1>
+                    </div>
+                </div>
+                <p class="footer-desc">پلی میان شما و بهترین کسب‌وکارها</p>
+            </div>
+            <div class="footer-links">
+                <h4>دسترسی سریع</h4>
+                <a href="#home">خانه</a>
+                <a href="#services">خدمات</a>
+                <a href="#how">راهنما</a>
+                <a href="#contact">تماس</a>
+            </div>
+            <div class="footer-links">
+                <h4>حساب کاربری</h4>
+                <a href="#register">ثبت‌نام فروشنده</a>
+                <a href="#dashboard">پنل فروشنده</a>
+                <a href="#admin">پنل مدیریت</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© ۱۴۰۵ تمامی حقوق برای <strong class="logo-fa-inline">مَعبر</strong> محفوظ است.</p>
+        </div>
+    </footer>
+
+    <!-- مودال پیام‌ها -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-box">
+            <div class="modal-icon" id="modal-icon">✨</div>
+            <h3 id="modal-title">عنوان</h3>
+            <p id="modal-message">پیام</p>
+            <button class="btn btn-primary" onclick="closeModal()">متوجه شدم</button>
+        </div>
+    </div>
+
+    <!-- مودال افزودن محصول -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-box modal-large">
+            <div class="modal-icon">🛍️</div>
+            <h3>افزودن محصول جدید</h3>
+            <form id="product-form" style="text-align: right; margin-top: 20px;">
+                <div class="form-group">
+                    <label>نام محصول *</label>
+                    <input type="text" id="p-name" required>
+                </div>
+                <div class="form-group">
+                    <label>عکس محصول</label>
+                    <input type="file" id="p-image" accept="image/*">
+                    <img id="p-image-preview" class="img-preview" alt="پیش‌نمایش">
+                </div>
+                <div class="form-group">
+                    <label>توضیحات محصول (اختیاری)</label>
+                    <textarea id="p-desc" rows="2" placeholder="مشتری با کلیک روی محصول، این توضیحات را می‌بیند"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>قیمت اصلی (تومان) *</label>
+                    <input type="number" id="p-price" required min="0" dir="ltr">
+                </div>
+                <div class="form-group">
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="checkbox" id="p-has-discount"> اعمال تخفیف
+                    </label>
+                </div>
+                <div id="discount-fields" style="display:none;">
+                    <div class="form-group">
+                        <label>نوع تخفیف</label>
+                        <select id="p-discount-type">
+                            <option value="percent">درصدی (%)</option>
+                            <option value="amount">مبلغی (تومان)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>مقدار تخفیف</label>
+                        <input type="number" id="p-discount" min="0" dir="ltr">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeProductModal()">انصراف</button>
+                    <button type="submit" class="btn btn-primary">ذخیره محصول</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- مودال تغییر رمز مدیر -->
+    <div class="modal-overlay" id="password-modal">
+        <div class="modal-box">
+            <div class="modal-icon">🔒</div>
+            <h3>تغییر رمز عبور مدیر</h3>
+            <div class="form-group">
+                <label>رمز فعلی</label>
+                <input type="password" id="cur-pwd" placeholder="رمز فعلی">
+            </div>
+            <div class="form-group">
+                <label>رمز جدید (حداقل ۶ کاراکتر)</label>
+                <input type="password" id="new-pwd" placeholder="رمز جدید">
+            </div>
+            <div class="form-group">
+                <label>تکرار رمز جدید</label>
+                <input type="password" id="conf-pwd" placeholder="تکرار رمز جدید">
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-secondary" onclick="closePasswordModal()">انصراف</button>
+                <button class="btn btn-primary" onclick="saveAdminPassword()">ذخیره رمز جدید</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
